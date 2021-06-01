@@ -3,7 +3,6 @@ set -e
 
 # Options for starting Ganesha
 : ${GANESHA_LOGFILE:="/dev/stdout"}
-: ${GANESHA_CONFIGFILE:="/etc/ganesha/ganesha.conf"}
 : ${GANESHA_OPTIONS:="-N NIV_EVENT"} # NIV_DEBUG
 
 function init_rpc {
@@ -28,4 +27,4 @@ init_dbus
 
 echo "Starting Ganesha NFS"
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib
-exec /usr/local/bin/ganesha.nfsd -F -L ${GANESHA_LOGFILE} -f ${GANESHA_CONFIGFILE} ${GANESHA_OPTIONS}
+exec /usr/local/bin/ganesha.nfsd -F -L /dev/stdout ${GANESHA_OPTIONS}
